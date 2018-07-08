@@ -1,14 +1,17 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
+import discord
+from discord.ext import commands
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
+bot = commands.Bot(command_prefix='$')
 
-client.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('Pong!');
-  }
-});
-process.env.NDYzNDgwNzcxODkwNTExODcz.DhxEFQ.dbwWZOgLwS_OSXQd241FOi2tL6Y
-client.login('token');
+@bot.event
+async def on_ready():
+    print('Logged in as')
+    print(bot.user.name)
+    print(bot.user.id)
+    print('------')
+
+@bot.command()
+async def greet(ctx):
+    await ctx.send(":smiley: :wave: Hello, there!")
+
+bot.run('NDYzNDgwNzcxODkwNTExODcz.DiQh4w.qQnjk925-5AMAldGnMARdKUNni8')
