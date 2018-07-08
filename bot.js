@@ -1,17 +1,29 @@
-import discord
-from discord.ext import commands
+const Discord = require('discord.js');
 
-bot = commands.Bot(command_prefix='$')
+const client = new Discord.Client();
 
-@bot.event
-async def on_ready():
-    print('Logged in as')
-    print(bot.user.name)
-    print(bot.user.id)
-    print('------')
 
-@bot.command()
-async def greet(ctx):
-    await ctx.send(":smiley: :wave: Hello, there!")
 
-bot.run('NDYzNDgwNzcxODkwNTExODcz.DiQh4w.qQnjk925-5AMAldGnMARdKUNni8')
+client.on('ready', () => {
+
+    console.log('I am ready!');
+
+});
+
+
+
+client.on('message', message => {
+
+    if (message.content === 'ping') {
+
+    	message.reply('pong');
+
+  	}
+
+});
+
+
+
+// THIS  MUST  BE  THIS  WAY
+
+client.login(process.env.BOT_TOKEN);
